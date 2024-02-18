@@ -1,7 +1,7 @@
-import { Server } from '../lexicon'
-import { AppContext } from '../config'
-import algos from '../algos'
 import { AtUri } from '@atproto/syntax'
+import algos from '../algos'
+import { AppContext } from '../config'
+import { Server } from '../lexicon'
 
 export default function (server: Server, ctx: AppContext) {
   server.app.bsky.feed.describeFeedGenerator(async () => {
