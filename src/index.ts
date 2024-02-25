@@ -2,7 +2,9 @@ import dotenv from 'dotenv'
 import FeedGenerator from './server'
 
 // SET THIS TO YOUR DID
-export const FEEDGEN_PUBLISHER_DID = 'did:example:alice'
+// You can find your accounts DID by going to
+// https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
+export const FEEDGEN_PUBLISHER_DID = 'did:plc:snjxvu5fmqeyto5dqlwxjwgq'
 
 const run = async () => {
   dotenv.config()

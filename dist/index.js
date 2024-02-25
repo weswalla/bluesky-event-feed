@@ -7,7 +7,9 @@ exports.FEEDGEN_PUBLISHER_DID = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const server_1 = __importDefault(require("./server"));
 // SET THIS TO YOUR DID
-exports.FEEDGEN_PUBLISHER_DID = 'did:example:alice';
+// You can find your accounts DID by going to
+// https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
+exports.FEEDGEN_PUBLISHER_DID = 'did:plc:snjxvu5fmqeyto5dqlwxjwgq';
 const run = async () => {
     dotenv_1.default.config();
     const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com';
