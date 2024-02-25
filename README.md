@@ -53,7 +53,8 @@ We've taken care of setting this server up with a did:web. However, you're free 
    d. now create an app. call it anything
    e. to deploy, i recommend the heroku cli. go to your terminal and execute `heroku login`. it'll take you to your browser to auth
    f. add the heroku remote to your git repo (replace with your app name): `heroku git:remote -a your_heroku_app_name`
-   g. push to the heroku remote: `git push heroku main`
+   g. push to the heroku remote (after committing the changes you want to deploy): `git push heroku`
+   h. if the deploy failed, grab Cooper and he'll help you; if it succeeded, it will print the url it is deployed to. Copy that to .env `FEEDGEN_HOSTNAME`
 5.
 
 Your feed will need to be accessible at the value supplied to the `FEEDGEN_HOSTNAME` environment variable.
