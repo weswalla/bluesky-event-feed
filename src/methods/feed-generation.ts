@@ -13,6 +13,11 @@ export default function (server: Server, ctx: AppContext) {
       feedUri.collection !== 'app.bsky.feed.generator' ||
       !algo
     ) {
+      console.log('Unsupported feed', feedUri)
+      console.log('Supported feeds', Object.keys(algos))
+      console.log('Publisher DID', ctx.cfg.publisherDid)
+      console.log('feedUri.hostname', feedUri.hostname)
+      console.log('feedUri.collection', feedUri.collection)
       throw new InvalidRequestError(
         'Unsupported algorithm',
         'UnsupportedAlgorithm',

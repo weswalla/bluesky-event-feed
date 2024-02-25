@@ -44,7 +44,7 @@ We've taken care of setting this server up with a did:web. However, you're free 
 ### Testing & Deploying your feed
 
 1. Copy .env.example to .env
-2. In .env, set FEEDGEN_PUBLISHER_DID to your did. You can find your accounts DID by going to https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
+2. Search for `export const FEEDGEN_PUBLISHER_DID` and set that constant to your did. You can find your accounts DID by going to https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
 3. You can test your feed by running `ts-node src/test-request.ts`
 4. To make your feed accessible in the bluesky app, you'll need to host it on a server that can respond to HTTPS queries over port 443. In this walkthrough we'll use heroku.com.
    a. go to heroku.com

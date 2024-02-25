@@ -1,7 +1,5 @@
-import dotenv from 'dotenv'
+import { FEEDGEN_PUBLISHER_DID } from './index'
 
-dotenv.config()
-const FEEDGEN_PUBLISHER_DID = process.env.FEEDGEN_PUBLISHER_DID
 const FEED_ID = 'whats-alf'
 const LIMIT = 35
 

@@ -3,19 +3,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FEEDGEN_PUBLISHER_DID = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 const server_1 = __importDefault(require("./server"));
+// SET THIS TO YOUR DID
+exports.FEEDGEN_PUBLISHER_DID = 'did:example:alice';
 const run = async () => {
     dotenv_1.default.config();
     const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com';
     const serviceDid = maybeStr(process.env.FEEDGEN_SERVICE_DID) ?? `did:web:${hostname}`;
     const server = server_1.default.create({
         port: maybeInt(process.env.PORT) ?? 80,
-        listenhost: maybeStr(process.env.FEEDGEN_LISTENHOST) ?? 'localhost',
+        listenhost: maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'http://localhost',
         sqliteLocation: maybeStr(process.env.FEEDGEN_SQLITE_LOCATION) ?? ':memory:',
         subscriptionEndpoint: maybeStr(process.env.FEEDGEN_SUBSCRIPTION_ENDPOINT) ??
             'wss://bsky.network',
-        publisherDid: maybeStr(process.env.FEEDGEN_PUBLISHER_DID) ?? 'did:example:alice',
+        publisherDid: exports.FEEDGEN_PUBLISHER_DID,
         subscriptionReconnectDelay: maybeInt(process.env.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY) ?? 3000,
         hostname,
         serviceDid,

@@ -1,6 +1,9 @@
 import dotenv from 'dotenv'
 import FeedGenerator from './server'
 
+// SET THIS TO YOUR DID
+export const FEEDGEN_PUBLISHER_DID = 'did:example:alice'
+
 const run = async () => {
   dotenv.config()
   const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com'
@@ -8,13 +11,12 @@ const run = async () => {
     maybeStr(process.env.FEEDGEN_SERVICE_DID) ?? `did:web:${hostname}`
   const server = FeedGenerator.create({
     port: maybeInt(process.env.PORT) ?? 80,
-    listenhost: maybeStr(process.env.FEEDGEN_LISTENHOST) ?? 'localhost',
+    listenhost: maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'http://localhost',
     sqliteLocation: maybeStr(process.env.FEEDGEN_SQLITE_LOCATION) ?? ':memory:',
     subscriptionEndpoint:
       maybeStr(process.env.FEEDGEN_SUBSCRIPTION_ENDPOINT) ??
       'wss://bsky.network',
-    publisherDid:
-      maybeStr(process.env.FEEDGEN_PUBLISHER_DID) ?? 'did:example:alice',
+    publisherDid: FEEDGEN_PUBLISHER_DID,
     subscriptionReconnectDelay:
       maybeInt(process.env.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY) ?? 3000,
     hostname,
