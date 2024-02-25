@@ -45,7 +45,7 @@ We've taken care of setting this server up with a did:web. However, you're free 
 
 1. Copy .env.example to .env
 2. Search for `export const FEEDGEN_PUBLISHER_DID` and set that constant to your did. You can find your accounts DID by going to https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
-3. You can test your feed by running `ts-node scripts/test-request.ts`
+3. You can test your feed by running `ts-node src/test-request.ts`
 4. To make your feed accessible in the bluesky app, you'll need to host it on a server that can respond to HTTPS queries over port 443. In this walkthrough we'll use heroku.com.
    a. go to heroku.com
    b. sign up. you are required to do 2FA
@@ -54,7 +54,7 @@ We've taken care of setting this server up with a did:web. However, you're free 
    e. to deploy, i recommend the heroku cli. go to your terminal and execute `heroku login`. it'll take you to your browser to auth
    f. add the heroku remote to your git repo (replace with your app name): `heroku git:remote -a your_heroku_app_name`
    g. push to the heroku remote (after committing the changes you want to deploy): `git push heroku`
-   h. if the deploy failed, grab Cooper and he'll help you; if it succeeded, it will print the url it is deployed to. Copy that to .env `FEEDGEN_HOSTNAME`
+   h. if the deploy failed, grab Cooper and he'll help you; if it succeeded, it will print the url it is deployed to. Copy that to the `FEEDGEN_HOSTNAME` constant in `index.ts`
 5. Woohoo! Now that your feed is hosted on a web server, you can "publish" the feed on Bluesky, which means to tell Bluesky that your feed exists and how it can be reached and to attach the feed to your profile. That's the next section.
 
 ### Publishing your feed
