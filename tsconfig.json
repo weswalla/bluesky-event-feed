@@ -11,6 +11,6 @@
     "strictNullChecks": true,
     "skipLibCheck": true
   },
-  "include": ["./src/**/*.ts", "scripts/test-request.ts"],
+  "include": ["./src/**/*.ts"],
   "exclude": ["node_modules"]
 }
