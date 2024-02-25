@@ -1,6 +1,7 @@
 import { FEEDGEN_PUBLISHER_DID } from './index'
 
-const FEED_ID = 'whats-alf'
+// TODO: Replace with your feed ID
+const FEED_ID = 'hack-bluesky'
 const LIMIT = 35
 
 export async function testFeed() {

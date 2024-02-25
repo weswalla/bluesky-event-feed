@@ -23,8 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const whatsAlf = __importStar(require("./whats-alf"));
+const hackBluesky = __importStar(require("./hack-bluesky"));
 const algos = {
-    [whatsAlf.shortname]: whatsAlf.handler,
+    [hackBluesky.shortname]: hackBluesky.handler,
 };
 exports.default = algos;

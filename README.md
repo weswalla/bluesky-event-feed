@@ -35,7 +35,7 @@ Next, you will need to do two things:
 
 2. Implement feed generation logic in `src/algos`
 
-   For inspiration, we've provided a very simple feed algorithm (`whats-alf`) that returns all posts related to the titular character of the TV show ALF.
+   For inspiration, we've provided a very simple feed algorithm (`hack-bluesky`) that returns all posts related to the titular character of the TV show ALF.
 
    You can either edit it or add another algorithm alongside it. The types are in place, and you will just need to return something that satisfies the `SkeletonFeedPost[]` type.
 
