@@ -9,8 +9,7 @@ export const FEEDGEN_PUBLISHER_DID = 'did:plc:snjxvu5fmqeyto5dqlwxjwgq'
 const run = async () => {
   dotenv.config()
   const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com'
-  const serviceDid =
-    maybeStr(process.env.FEEDGEN_SERVICE_DID) ?? `did:web:${hostname}`
+  const serviceDid = FEEDGEN_PUBLISHER_DID
   const server = FeedGenerator.create({
     port: maybeInt(process.env.PORT) ?? 80,
     listenhost: maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'http://localhost',

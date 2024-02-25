@@ -13,7 +13,7 @@ exports.FEEDGEN_PUBLISHER_DID = 'did:plc:snjxvu5fmqeyto5dqlwxjwgq';
 const run = async () => {
     dotenv_1.default.config();
     const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com';
-    const serviceDid = maybeStr(process.env.FEEDGEN_SERVICE_DID) ?? `did:web:${hostname}`;
+    const serviceDid = exports.FEEDGEN_PUBLISHER_DID;
     const server = server_1.default.create({
         port: maybeInt(process.env.PORT) ?? 80,
         listenhost: maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'http://localhost',

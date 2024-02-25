@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import { AtpAgent, BlobRef } from '@atproto/api'
 import fs from 'fs/promises'
 import { ids } from '../src/lexicon/lexicons'
+import { FEEDGEN_PUBLISHER_DID } from '../src/index'
 
 const run = async () => {
   dotenv.config()
@@ -12,8 +13,8 @@ const run = async () => {
 
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
-  // Ex: whats-hot
-  const recordName = 'feb-hackathon-test-feed'
+  // <15 characters
+  const recordName = 'hack-bluesky'
 
   // A display name for your feed
   // Ex: What's Hot
@@ -31,11 +32,11 @@ const run = async () => {
   // NO NEED TO TOUCH ANYTHING BELOW HERE
   // -------------------------------------
 
-  if (!process.env.FEEDGEN_SERVICE_DID && !process.env.FEEDGEN_HOSTNAME) {
+  if (!FEEDGEN_PUBLISHER_DID && !process.env.FEEDGEN_HOSTNAME) {
     throw new Error('Please provide a hostname in the .env file')
   }
   const feedGenDid =
-    process.env.FEEDGEN_SERVICE_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
+    FEEDGEN_PUBLISHER_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
 
   // only update this if in a test environment
   const agent = new AtpAgent({ service: 'https://bsky.social' })
