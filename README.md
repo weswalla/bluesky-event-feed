@@ -45,7 +45,7 @@ We've taken care of setting this server up with a did:web. However, you're free 
 
 1. Copy .env.example to .env
 2. Search for `export const FEEDGEN_PUBLISHER_DID` and set that constant to your did. You can find your accounts DID by going to https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
-3. You can test your feed by running `ts-node src/test-request.ts`
+3. You can test your feed by running `ts-node scripts/test-request.ts`
 4. To make your feed accessible in the bluesky app, you'll need to host it on a server that can respond to HTTPS queries over port 443. In this walkthrough we'll use heroku.com.
    a. go to heroku.com
    b. sign up. you are required to do 2FA
@@ -55,21 +55,16 @@ We've taken care of setting this server up with a did:web. However, you're free 
    f. add the heroku remote to your git repo (replace with your app name): `heroku git:remote -a your_heroku_app_name`
    g. push to the heroku remote (after committing the changes you want to deploy): `git push heroku`
    h. if the deploy failed, grab Cooper and he'll help you; if it succeeded, it will print the url it is deployed to. Copy that to .env `FEEDGEN_HOSTNAME`
-5.
-
-Your feed will need to be accessible at the value supplied to the `FEEDGEN_HOSTNAME` environment variable.
+5. Woohoo! Now that your feed is hosted on a web server, you can "publish" the feed on Bluesky, which means to tell Bluesky that your feed exists and how it can be reached and to attach the feed to your profile. That's the next section.
 
 ### Publishing your feed
 
-To publish your feed, go to the script at `scripts/publishFeedGen.ts` and fill in the variables at the top. Examples are included, and some are optional. To publish your feed generator, simply run `yarn publishFeed`.
+1. Fill in your Bluesky handle and password in .env
+2. Go to the script at `scripts/publishFeedGen.ts` and fill in the variables at the top. The record name and display name are required. We recommend adding a description. You can change these things later. To publish it, run `ts-node scripts/publishFeedGen.ts`.
 
 To update your feed's display data (name, avatar, description, etc.), just update the relevant variables and re-run the script.
 
 After successfully running the script, you should be able to see your feed from within the app, as well as share it by embedding a link in a post (similar to a quote post).
-
-## Running the Server
-
-Install dependencies with `yarn` and then run the server with `yarn start`. This will start the server on port 3000, or what's defined in `.env`. You can then watch the firehose output in the console and access the output of the default custom ALF feed at [http://localhost:3000/xrpc/app.bsky.feed.getFeedSkeleton?feed=at://did:example:alice/app.bsky.feed.generator/whats-alf](http://localhost:3000/xrpc/app.bsky.feed.getFeedSkeleton?feed=at://did:example:alice/app.bsky.feed.generator/whats-alf).
 
 ## Some Details
 

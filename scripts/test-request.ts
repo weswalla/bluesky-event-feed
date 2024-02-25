@@ -1,4 +1,4 @@
-import { FEEDGEN_PUBLISHER_DID } from './index'
+import { FEEDGEN_PUBLISHER_DID } from '../src/index'
 
 const FEED_ID = 'whats-alf'
 const LIMIT = 35
