@@ -51,7 +51,7 @@ class FeedGenerator {
     async start() {
         await (0, db_1.migrateToLatest)(this.db);
         this.firehose.run(this.cfg.subscriptionReconnectDelay);
-        this.server = this.app.listen(this.cfg.port, this.cfg.listenhost);
+        this.server = this.app.listen(this.cfg.port);
         await events_1.default.once(this.server, 'listening');
         return this.server;
     }
