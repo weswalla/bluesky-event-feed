@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import { AtpAgent, BlobRef } from '@atproto/api'
 import fs from 'fs/promises'
 import { ids } from '../src/lexicon/lexicons'
-import { FEEDGEN_PUBLISHER_DID } from '../src/index'
+import { FEEDGEN_HOSTNAME, FEEDGEN_PUBLISHER_DID } from '../src/index'
 
 const run = async () => {
   dotenv.config()
@@ -32,11 +32,10 @@ const run = async () => {
   // NO NEED TO TOUCH ANYTHING BELOW HERE
   // -------------------------------------
 
-  if (!FEEDGEN_PUBLISHER_DID && !process.env.FEEDGEN_HOSTNAME) {
+  if (!FEEDGEN_PUBLISHER_DID && !FEEDGEN_HOSTNAME) {
     throw new Error('Please provide a hostname in the .env file')
   }
-  const feedGenDid =
-    FEEDGEN_PUBLISHER_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
+  const feedGenDid = `did:web:${FEEDGEN_HOSTNAME}`
 
   // only update this if in a test environment
   const agent = new AtpAgent({ service: 'https://bsky.social' })

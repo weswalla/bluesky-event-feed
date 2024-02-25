@@ -5,14 +5,15 @@ import FeedGenerator from './server'
 // You can find your accounts DID by going to
 // https://bsky.social/xrpc/com.atproto.identity.resolveHandle?handle=${YOUR_HANDLE}
 export const FEEDGEN_PUBLISHER_DID = 'did:plc:snjxvu5fmqeyto5dqlwxjwgq'
+export const FEEDGEN_HOSTNAME = 'bsky-feed-demo-298fbea23f16.herokuapp.com'
 
 const run = async () => {
   dotenv.config()
-  const hostname = maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'example.com'
+  const hostname = FEEDGEN_HOSTNAME
   const serviceDid = FEEDGEN_PUBLISHER_DID
   const server = FeedGenerator.create({
     port: maybeInt(process.env.PORT) ?? 80,
-    listenhost: maybeStr(process.env.FEEDGEN_HOSTNAME) ?? 'http://localhost',
+    listenhost: FEEDGEN_HOSTNAME,
     sqliteLocation: maybeStr(process.env.FEEDGEN_SQLITE_LOCATION) ?? ':memory:',
     subscriptionEndpoint:
       maybeStr(process.env.FEEDGEN_SUBSCRIPTION_ENDPOINT) ??
