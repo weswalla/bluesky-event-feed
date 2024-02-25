@@ -22,7 +22,7 @@ const run = async () => {
     subscriptionReconnectDelay:
       maybeInt(process.env.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY) ?? 3000,
     hostname,
-    serviceDid,
+    serviceDid: `did:web:${FEEDGEN_HOSTNAME}`,
   })
   await server.start()
   console.log(

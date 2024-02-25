@@ -24,7 +24,7 @@ const run = async () => {
         publisherDid: exports.FEEDGEN_PUBLISHER_DID,
         subscriptionReconnectDelay: maybeInt(process.env.FEEDGEN_SUBSCRIPTION_RECONNECT_DELAY) ?? 3000,
         hostname,
-        serviceDid,
+        serviceDid: `did:web:${exports.FEEDGEN_HOSTNAME}`,
     });
     await server.start();
     console.log(`🤖 running feed generator at ${server.cfg.listenhost}:${server.cfg.port}`);
