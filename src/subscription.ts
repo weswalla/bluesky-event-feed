@@ -1,3 +1,4 @@
+import { eventFilter } from './event-filter'
 import {
   OutputSchema as RepoEvent,
   isCommit,
@@ -19,10 +20,9 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
     const postsToDelete = ops.posts.deletes.map((del) => del.uri)
     const postsToCreate = ops.posts.creates
       .filter((create) => {
-        return create.record.text.toLowerCase().includes('#hack-bluesky')
+        return eventFilter(create.record.text)
       })
       .map((create) => {
-        // map alf-related posts to a db row
         return {
           uri: create.uri,
           cid: create.cid,
