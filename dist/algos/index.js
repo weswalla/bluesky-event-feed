@@ -23,8 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const hackBluesky = __importStar(require("./hack-bluesky"));
+const eventFeed = __importStar(require("./event-feed"));
 const algos = {
-    [hackBluesky.shortname]: hackBluesky.handler,
+    [eventFeed.shortname]: eventFeed.handler,
 };
 exports.default = algos;

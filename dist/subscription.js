@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FirehoseSubscription = void 0;
+const event_filter_1 = require("./event-filter");
 const subscribeRepos_1 = require("./lexicon/types/com/atproto/sync/subscribeRepos");
 const subscription_1 = require("./util/subscription");
 class FirehoseSubscription extends subscription_1.FirehoseSubscriptionBase {
@@ -17,10 +18,9 @@ class FirehoseSubscription extends subscription_1.FirehoseSubscriptionBase {
         const postsToDelete = ops.posts.deletes.map((del) => del.uri);
         const postsToCreate = ops.posts.creates
             .filter((create) => {
-            return create.record.text.toLowerCase().includes('#hack-bluesky');
+            return (0, event_filter_1.eventFilter)(create.record.text);
         })
             .map((create) => {
-            // map alf-related posts to a db row
             return {
                 uri: create.uri,
                 cid: create.cid,
