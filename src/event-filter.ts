@@ -18,12 +18,5 @@ const EVENT_PLATFORMS = [
 ]
 
 export function eventFilter(text: string) {
-  // Escape special characters in domains and join them into a regex pattern
-  const domainPattern = EVENT_PLATFORMS.map((platform) =>
-    platform.domain.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
-  ) // Escape special characters
-    .join('|')
-  const regexPattern = `https?://(?:[^/]*\\.)?(?:${domainPattern})(?:/[^ ]*)?`
-  const regex = new RegExp(regexPattern)
-  return regex.test(text)
+  return EVENT_PLATFORMS.some((platform) => text.includes(platform.domain))
 }
