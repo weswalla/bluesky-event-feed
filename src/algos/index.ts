@@ -3,12 +3,12 @@ import {
   OutputSchema as AlgoOutput,
   QueryParams,
 } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
-import * as hackBluesky from './hack-bluesky'
+import * as eventFeed from './event-feed'
 
 type AlgoHandler = (ctx: AppContext, params: QueryParams) => Promise<AlgoOutput>
 
 const algos: Record<string, AlgoHandler> = {
-  [hackBluesky.shortname]: hackBluesky.handler,
+  [eventFeed.shortname]: eventFeed.handler,
 }
 
 export default algos

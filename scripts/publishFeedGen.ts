@@ -14,15 +14,16 @@ const run = async () => {
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
   // <15 characters
-  const recordName = 'hack-bluesky'
+  const recordName = 'event-feed'
 
   // A display name for your feed
   // Ex: What's Hot
-  const displayName = 'Hackathon Test'
+  const displayName = 'Events'
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = 'Showing posts with #hack-bluesky'
+  const description =
+    'Showing posts containing links to events on known platforms.'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg

@@ -1,7 +1,7 @@
 import { FEEDGEN_PUBLISHER_DID } from './index'
 
 // TODO: Replace with your feed ID
-const FEED_ID = 'hack-bluesky'
+const FEED_ID = 'event-feed'
 const LIMIT = 35
 
 export async function testFeed() {
