@@ -12,7 +12,8 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "test:feed": "ts-node src/test-request.ts",
-    "test": "jest"
+    "test": "jest",
+    "publish:feed": "ts-node scripts/publishFeedGen.ts"
   },
   "dependencies": {
     "@atproto/api": "^0.6.20",

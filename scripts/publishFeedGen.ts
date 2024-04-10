@@ -3,6 +3,7 @@ import { AtpAgent, BlobRef } from '@atproto/api'
 import fs from 'fs/promises'
 import { ids } from '../src/lexicon/lexicons'
 import { FEEDGEN_HOSTNAME, FEEDGEN_PUBLISHER_DID } from '../src/index'
+import path from 'path'
 
 const run = async () => {
   dotenv.config()
@@ -27,7 +28,7 @@ const run = async () => {
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
-  const avatar: string = ''
+  const avatar: string = path.join(__dirname, '../logo.png')
 
   // -------------------------------------
   // NO NEED TO TOUCH ANYTHING BELOW HERE
@@ -58,7 +59,6 @@ const run = async () => {
     })
     avatarRef = blobRes.data.blob
   }
-
   await agent.api.com.atproto.repo.putRecord({
     repo: agent.session?.did ?? '',
     collection: ids.AppBskyFeedGenerator,
